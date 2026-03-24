@@ -1,387 +1,123 @@
-# Domain Adapted AI Assistant - Lab 9 Enhancement
+# Domain Adapted AI Assistant
 
-A production-ready AI assistant system that leverages LoRA fine-tuning for domain-specific knowledge in operating systems and computer science concepts.
+This project demonstrates domain adaptation using LoRA fine-tuning to improve responses for domain-specific questions. The system extends a basic GenAI pipeline by adapting the model using an instruction dataset and improving usability, monitoring, and system stability.
 
-## Project Overview
+---
 
-This project demonstrates an end-to-end pipeline for domain adaptation using Low-Rank Adaptation (LoRA) fine-tuning. The system improves model responses for domain-specific questions while maintaining efficiency through parameter-efficient fine-tuning.
+## Pipeline
 
-**Architecture:** User → Streamlit UI → FastAPI Backend → Fine-tuned Model
+User → Streamlit → FastAPI → Fine-tuned Model
 
 ---
 
 ## Domain Task
 
-The system is specialized to answer **computer science and operating systems questions** with:
-- Clearer and more structured explanations
-- Domain-specific terminology and examples
-- Consistent formatting and response quality
-- Improved relevance through fine-tuning
+The system is designed to answer computer science questions (mainly operating systems concepts) with clearer and more structured explanations. The goal is to reduce generic responses and improve consistency using domain-specific knowledge.
 
 ---
 
-## Lab 9 Enhancements
+## Instruction Dataset
 
-### 1. **Improved Application Workflow & User Interaction**
-- Enhanced Streamlit interface with better UX
-- Chat history tracking for context awareness
-- Response formatting with syntax highlighting
-- Input validation and error messaging
-- Loading indicators for better user feedback
+An instruction dataset was created using question-answer pairs related to operating systems topics. This dataset helps guide the model to produce more consistent and domain-specific responses.
 
-### 2. **System Evaluation & Monitoring**
-- Comprehensive evaluation metrics tracking
-- Response quality scoring
-- Model performance comparison (before/after adaptation)
-- Inference time monitoring
-- Evaluation dashboard
-
-### 3. **Logging & Debugging Support**
-- Structured logging system with multiple log levels
-- Request/response logging for debugging
-- Performance metrics logging
-- Error tracking and reporting
-- Debug mode for development
-
-### 4. **Deployment & System Stability**
-- Docker containerization for consistent deployment
-- Environment configuration management
-- Error handling and graceful degradation
-- Health check endpoints
-- Production-ready dependencies
+File:
+- instructions.json
 
 ---
 
-## Quick Start
+## Adaptation Method
 
-### Prerequisites
-- Python 3.8+
-- pip or conda
+We used LoRA (Low-Rank Adaptation) with the PEFT library to fine-tune the model efficiently without retraining the entire model. This allows the system to adapt to the domain while keeping training cost low.
 
-### Installation
+Training script:
+- training/train_lora.py
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository_link>
-   cd lab_9_repo
-   ```
+---
 
-2. **Create a virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+## Application Enhancements
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+The Streamlit interface was improved to make the system easier to use and more interactive. Features such as better input handling, response formatting, and chat-style interaction were added.
 
-### Training the Model
+The connection between Streamlit and FastAPI was also improved so requests are handled more consistently. This helped reduce delays and improved the overall user experience.
 
-```bash
+---
+
+## Monitoring and Logging
+
+A monitoring and logging system was added to track user queries, model responses, and performance metrics.
+
+This includes:
+- Logging requests and responses for debugging  
+- Tracking inference time and system behavior  
+- Recording evaluation results for performance analysis  
+
+These improvements helped identify issues more easily and made the system more stable.
+
+---
+
+## Deployment and Stability
+
+The system was improved for deployment using Docker and better configuration management.
+
+This includes:
+- Docker container setup for consistent environments  
+- Error handling to prevent crashes  
+- Health checks and stable API responses  
+- Improved project structure for easier setup  
+
+---
+
+## Steps
+
+### Install dependencies
+pip install -r requirements.txt
+
+### Train model
 python training/train_lora.py
-```
 
-This will:
-- Load the base model (Microsoft Phi-2)
-- Apply LoRA configuration
-- Train on the instruction dataset
-- Save the fine-tuned model to `models/` directory
+### Start API
+uvicorn app.api:app --reload
 
-### Running the Application
-
-**Terminal 1 - Start the FastAPI backend:**
-```bash
-uvicorn app.api:app --reload --host 0.0.0.0 --port 8000
-```
-
-**Terminal 2 - Start the Streamlit frontend:**
-```bash
+### Run Streamlit
 streamlit run app/streamlit_app.py
-```
-
-The application will open at `http://localhost:8501`
 
 ---
 
-## 📁 Project Structure
+## Evaluation
 
-```
-lab_9_repo/
-├── app/
-│   ├── api.py                    # FastAPI backend with routes and monitoring
-│   ├── streamlit_app.py          # Streamlit UI with enhanced UX
-│   ├── config.py                 # Configuration management
-│   └── utils.py                  # Utility functions and helpers
-├── training/
-│   ├── train_lora.py             # LoRA fine-tuning script
-│   └── data_preparation.py       # Dataset preparation utilities
-├── evaluation/
-│   ├── evaluate.py               # System evaluation script
-│   └── metrics.py                # Metrics calculation and tracking
-├── dataset/
-│   └── instructions.json         # Training instruction dataset
-├── models/                       # Fine-tuned model storage
-├── logs/                         # Application logs
-├── Dockerfile                    # Container configuration
-├── docker-compose.yml            # Multi-container orchestration
-├── requirements.txt              # Python dependencies
-├── .env.example                  # Environment variables template
-├── README.md                     # This file
-```
+The system was tested using multiple queries before and after adaptation.
+
+Additional evaluation features include:
+- Comparing baseline vs adapted model responses  
+- Tracking response quality and consistency  
+- Monitoring inference time and performance  
+
+After applying domain adaptation and improvements:
+- Responses became more structured  
+- Answers were more relevant to operating systems topics  
+- System responses were more consistent  
+- Application runs more reliably during testing  
 
 ---
 
-## 📊 Evaluation Results
-
-The system demonstrates significant improvements after domain adaptation:
-
-### Response Quality Improvements
-- **Structured Responses:** 45% improvement in answer formatting
-- **Domain Relevance:** 60% increase in domain-specific terminology
-- **Consistency:** 50% reduction in generic responses
-- **Clarity:** 40% improvement in explanation clarity
-
-### Sample Queries
-
-**Question:** "What is deadlock?"
-
-*Before Adaptation:* Generic definition with minimal structure
-*After Adaptation:* Detailed explanation with conditions, examples, and prevention methods
-
----
-
-## 🔧 Configuration
-
-Create a `.env` file in the root directory:
-
-```
-MODEL_NAME=microsoft/phi-2
-MODEL_PATH=./models
-LOG_LEVEL=INFO
-DEBUG_MODE=False
-API_TIMEOUT=30
-MAX_RESPONSE_LENGTH=500
-```
-
----
-
-## 📈 Monitoring & Logging
-
-### Log Levels
-- **DEBUG:** Development and troubleshooting
-- **INFO:** General application information
-- **WARNING:** Potential issues
-- **ERROR:** Critical errors
-
-### Accessing Logs
-```bash
-tail -f logs/app.log              # API logs
-tail -f logs/evaluation.log       # Evaluation logs
-```
-
-### Health Check
-```bash
-curl http://localhost:8000/health
-```
-
----
-
-## 🐳 Docker Deployment
-
-### Build and Run with Docker
-
-```bash
-# Build the image
-docker build -t domain-ai-assistant .
-
-# Run the container
-docker run -p 8000:8000 -p 8501:8501 domain-ai-assistant
-```
-
-### Using Docker Compose
-
-```bash
-docker-compose up
-```
-
----
-
-## 👥 Team Contributions
+## Team Contributions
 
 ### Ibrahim Alborno (50%)
-- Instruction dataset creation and expansion
-- LoRA fine-tuning implementation using PEFT
-- Backend integration using FastAPI
-- Model evaluation and performance analysis
-- Debug and error handling in API
+- Worked on improving how the FastAPI backend connects with the fine-tuned model  
+- Added logging and monitoring for debugging and performance tracking  
+- Tested system performance using multiple queries  
+- Fixed API and response issues  
+- Helped ensure the full pipeline runs correctly  
 
 ### Immanuel Olaoye (50%)
-- Streamlit UI development with enhanced features
-- Logging and monitoring system implementation
-- System testing and debugging
-- Deployment preparation and Docker configuration
-- Project organization and documentation
+- Updated the Streamlit interface to improve usability and interaction  
+- Improved response display and formatting  
+- Helped organize frontend and backend communication  
+- Tested the system for stability and consistency  
+- Assisted with evaluation and user experience improvements  
 
 ---
 
-## 📚 Technical Details
+## Notes
 
-### Fine-tuning Method: LoRA
-
-**Why LoRA?**
-- Parameter-efficient (0.1% of model parameters)
-- Fast training without full model retraining
-- Maintains base model capabilities
-- Easy to deploy alongside original model
-
-**Configuration:**
-- Rank (r): 16
-- Alpha: 32
-- Target modules: q_proj, v_proj
-- Dropout: 0.1
-- Training epochs: 3
-
-### Model Architecture
-- **Base Model:** Microsoft Phi-2
-- **Fine-tuning Method:** LoRA with PEFT
-- **Training Framework:** Hugging Face Transformers
-- **Optimization:** AdamW with gradient accumulation
-
----
-
-## 🛠️ API Endpoints
-
-### Text Generation
-**Endpoint:** `POST /ask`
-
-Request:
-```json
-{
-  "question": "What is a semaphore?",
-  "max_length": 200
-}
-```
-
-Response:
-```json
-{
-  "response": "A semaphore is a synchronization primitive...",
-  "inference_time": 2.34,
-  "tokens_generated": 45
-}
-```
-
-### Health Check
-**Endpoint:** `GET /health`
-
-Response:
-```json
-{
-  "status": "healthy",
-  "uptime": 3600,
-  "requests_processed": 150
-}
-```
-
-### Metrics
-**Endpoint:** `GET /metrics`
-
-Response:
-```json
-{
-  "total_requests": 150,
-  "average_inference_time": 2.45,
-  "error_rate": 0.02,
-  "uptime_seconds": 3600
-}
-```
-
----
-
-## 🧪 Testing & Evaluation
-
-Run the evaluation script to assess model performance:
-
-```bash
-python evaluation/evaluate.py
-```
-
-This generates:
-- Response quality metrics
-- Comparison with base model
-- Performance benchmarks
-- Detailed evaluation report
-
----
-
-## 📝 Development Workflow
-
-### Adding New Features
-1. Create a feature branch: `git checkout -b feature/description`
-2. Make changes and test thoroughly
-3. Update logging and documentation
-4. Submit a pull request for review
-
-### Best Practices
-- Follow PEP 8 style guidelines
-- Add docstrings to all functions
-- Include logging in new features
-- Test error handling paths
-
----
-
-## ⚠️ Known Limitations & Future Work
-
-### Current Limitations
-- Model requires GPU for optimal performance
-- Response length is capped at 500 tokens
-- Single-turn conversation (no multi-turn dialogue)
-
-### Future Enhancements
-- Multi-turn conversation support
-- Fine-grained monitoring dashboard
-- Cloud deployment (AWS, GCP, Azure)
-- API authentication and rate limiting
-- Caching for common queries
-- Model quantization for faster inference
-
----
-
-## 📞 Support & Issues
-
-For issues, questions, or suggestions:
-1. Check existing GitHub issues
-2. Open a new issue with detailed description
-3. Include logs and reproduction steps
-4. Tag relevant team members
-
----
-
-## 📄 References
-
-- [LoRA Paper](https://arxiv.org/abs/2106.09685)
-- [PEFT Library](https://github.com/huggingface/peft)
-- [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- [Streamlit Documentation](https://docs.streamlit.io/)
-- [Microsoft Phi-2 Model](https://huggingface.co/microsoft/phi-2)
-
----
-
-## 📜 License
-
-This project is developed as part of CS 5542 coursework.
-
----
-
-## 📅 Important Dates
-
-- **Lab 9 Deadline:** Friday, March 20
-- **Grace Period:** Until Monday, March 23 at 12:00 PM (noon)
-- **Submission:** Canvas (Group and Individual Reports)
-
----
-
-**Last Updated:** Spring 2026
-**Status:** Lab 9 Complete & Ready for Deployment
+This project shows how domain adaptation can improve a GenAI system while keeping the training process efficient using LoRA. With added improvements in monitoring, logging, and deployment, the system is now closer to a production-ready application.
