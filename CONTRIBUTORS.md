@@ -1,15 +1,15 @@
-# Contributions
+## Contributions
 
-## Ibrahim Alborno
-- Created and expanded the instruction dataset
-- Implemented LoRA fine-tuning using PEFT
-- Integrated the adapted model into the FastAPI backend
-- Worked on evaluation by testing model responses before and after adaptation
-- Helped debug API and model response issues
+### Ibrahim Alborno
+- Worked on improving how the FastAPI backend connects with the fine-tuned model so responses are more consistent
+- Added basic logging to track user inputs and model outputs, which helped with debugging
+- Ran multiple test queries to check system performance and response quality
+- Fixed API and response issues that were causing errors or delays
+- Helped make sure the full pipeline runs properly from start to finish
 
-## Immanuel Olaoye
-- Developed the Streamlit user interface
-- Organized project structure and files
-- Tested the full pipeline (frontend and backend)
-- Helped refine prompts and improve response formatting
-- Assisted with evaluation and system testing
+### Immanuel Olaoye
+- Updated the Streamlit interface to make it easier to use and cleaner
+- Improved how responses are displayed so they are easier to read
+- Helped organize the flow between frontend and backend for smoother execution
+- Tested the system multiple times to make sure it runs without crashing
+- Helped with evaluation and suggested improvements for user experience
