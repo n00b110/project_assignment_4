@@ -1,5 +1,5 @@
-For Project 3, I mainly worked on the backend side of the system. A lot of my time went into making sure the FastAPI backend connected properly with the model and that responses were being returned the way they were supposed to. I also worked on debugging issues, fixing parts of the system when the flow was breaking, and helping make the project run more reliably.
+My work on Project 3 was mostly on the backend side. I spent a lot of time dealing with FastAPI, fixing issues with responses, and making sure the model and backend were actually working together the way they were supposed to. I also worked on logging and monitoring so we could better track what the system was doing during testing.
 
-I also contributed to logging, monitoring, and testing. That work helped us track system behavior better and made it easier to catch problems during testing. Since the project was supposed to bring together Project 2 and Labs 6 through 9, I also helped make sure the final system felt connected instead of looking like separate parts put together.
+A big part of what I contributed was making the project feel like one connected system instead of separate labs. I was involved in debugging problems, improving stability, and helping the backend side run more reliably. My estimated contribution was 50%.
 
-My estimated contribution was 50%. I used Claude and ChatGPT during setup and debugging to help with dependency issues, configuration problems, and troubleshooting.
+I used Claude and ChatGPT during setup and debugging for troubleshooting, dependency issues, and configuration help. My GitHub evidence includes commits and repository updates related to backend integration, logging, monitoring, debugging, and testing.
