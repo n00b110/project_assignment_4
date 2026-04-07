@@ -1,9 +1,20 @@
+CS 5542 – Project Assignment 3
+Individual Contribution Report
 Name: Ibrahim Alborno
-Course: CS 5542
-Project: Project 3 Integrated System Report and Final System Enhancement
 
-My work on Project 3 was mostly on the backend side. I spent a lot of time dealing with FastAPI, fixing issues with responses, and making sure the model and backend were actually working together the way they were supposed to. I also worked on logging and monitoring so we could better track what the system was doing during testing.
+For Project Assignment 3, I contributed to the technical development and final integration of our system across the major backend and system-side components. My work focused mainly on backend integration, model connection, debugging, testing, monitoring, and helping make sure the overall project pipeline functioned as one connected system instead of a group of separate files. I also helped align the implementation with the project requirements and supported the final report and repository cleanup so the system was easier to understand and reproduce.
 
-A big part of what I contributed was making the project feel like one connected system instead of separate labs. I was involved in debugging problems, improving stability, and helping the backend side run more reliably. My estimated contribution was 50%.
+A large part of my contribution was working on the backend side of the project. I helped connect the application flow so that requests could move through the system correctly and return usable results. I also worked on debugging API behavior, checking response flow, and making sure the backend and the rest of the project were working together in a stable way. In addition, I supported testing and system troubleshooting so we could identify issues and improve the reliability of the project.
 
-I used Claude and ChatGPT during setup and debugging for troubleshooting, dependency issues, and configuration help. My GitHub evidence includes commits and repository updates related to backend integration, logging, monitoring, debugging, and testing.
+I also contributed to monitoring, evaluation support, and final system coordination. As the project developed, I helped make sure the major components were aligned and functioning together. This included checking how the pieces fit together, reviewing how the system behaved during testing, and helping prepare the project for final submission in a more complete and organized way.
+
+My percentage contribution to the project was: 50%
+
+Tools Used:
+- ChatGPT
+- Claude
+
+These tools were used to support debugging, setup, documentation refinement, and general development assistance while I still handled the project decisions and implementation work.
+
+Reflection:
+This project helped me understand how difficult it can be to bring multiple technical parts together into one working system. My biggest contribution was on the backend and integration side, and that taught me a lot about how important it is for the model, application logic, and supporting components to work smoothly together. I also learned that debugging and testing are just as important as building features, because even a good idea does not help if the system does not run reliably. Overall, this project gave me more experience in connecting AI-related components into a complete application instead of treating them as separate assignments.
