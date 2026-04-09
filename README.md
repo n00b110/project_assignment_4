@@ -61,7 +61,7 @@ The system includes a FastAPI backend and a Streamlit frontend. The backend hand
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/<your-username>/project_assignment_4.git
+git clone https://github.com/n00b110/project_assignment_4.git
 cd project_assignment_4
 ```
 
@@ -124,7 +124,7 @@ To reproduce the project:
 - `evaluation/` - evaluation scripts and testing support
 - `monitoring/` - monitoring and metrics support
 - `README.md` - main project documentation
-- 
+
 ## Demo Video
 
 Add your public video link here.
