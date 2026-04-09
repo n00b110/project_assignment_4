@@ -124,15 +124,11 @@ To reproduce the project:
 - `evaluation/` - evaluation scripts and testing support
 - `monitoring/` - monitoring and metrics support
 - `README.md` - main project documentation
-
-## System Architecture Diagram
-
-Add your architecture diagram image or link here.
-
+- 
 ## Demo Video
 
 Add your public video link here.
 
 ## Poster
 
-file:///C:/Users/ibrah/Downloads/Project%20Assignment%204%20-%20Poster.pdf
+https://github.com/n00b110/project_assignment_4/blob/main/Project%20Assignment%204%20-%20Poster.pdf
